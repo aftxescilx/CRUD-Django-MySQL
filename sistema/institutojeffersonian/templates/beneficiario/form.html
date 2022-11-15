@@ -1,0 +1,30 @@
+<form enctype="multipart/form-data" method="post">
+
+    {% csrf_token %}
+        {% for campo in formulario %}
+
+            <div class="card-body mb-3">
+                <div class="mb-3">
+                    <label for="Nombre" class="form-label">{{ campo.label }}</label>
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    name="{{ campo.name }}" 
+                    id="" 
+                    aria-describedby="helpId" 
+                    placeholder="{{ campo.label }}"
+                    value="{{ campo.value | default:''}}"
+                    required>
+                    <div class="invalid-feedback">
+                        Se requiere un dato válido.
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 help-text"> {{campo.errors}} </div>
+        {% endfor %}
+        
+        <div class="card-body mb-3">
+            <input name="" id="" class=" mb-3 col-12 btn btn-success" type="submit" value="Enviar información">
+        </div>
+</form>

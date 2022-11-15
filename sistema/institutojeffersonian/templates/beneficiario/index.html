@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block titulo %} Beneficiario {% endblock %}
+        
+    {% block contenido %} 
+
+    <div class="card">
+        <div class="card-header">
+            Lista de Beneficiarios |  
+            <a name="" id="" class="" href="{% url 'crear' %}" role="button">Añadir</a>
+        </div>
+        <div class="card-body">
+            <h4 class="card-title">Beneficiarios</h4>
+            <div class="table-responsive">
+                <table class="table table-primary">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">RFC</th>
+                            <th scope="col">Acción</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for beneficiario in beneficiario %}
+                        <tr>
+                            <td>{{ beneficiario.id }}</td>
+                            <td>{{ beneficiario.nombre }}</td>
+                            <td>{{ beneficiario.rfc }}</td>
+                            <td> <a name="" id="editar" class="" href="{% url 'editar' beneficiario.id %}" role="button">Editar</a> 
+                            | 
+                                 <a name="" id="eliminar" class="" href="{% url 'eliminar' beneficiario.id %}" role="button">Eliminar</a> 
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    {% endblock %}
